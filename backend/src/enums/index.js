@@ -1,5 +1,5 @@
 const BASE_ROUTE = '/api';
 
-export const Routes = {
+export const ROUTES = {
   NOTES: `${BASE_ROUTE}/notes`,
 };
