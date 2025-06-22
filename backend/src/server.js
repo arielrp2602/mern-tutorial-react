@@ -10,16 +10,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// MIDDLEWARE
+connectDB();
 // needed middleware to access param values
 app.use(express.json());
-app.use(rateLimiter);
-
-// routes
 app.use(ROUTES.NOTES, notesRoutes);
 
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
