@@ -1,5 +1,6 @@
-import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
+import express from 'express';
 
 import { ROUTES } from './enums/index.js';
 import { notesRoutes } from './routes/index.js';
@@ -14,6 +15,11 @@ connectDB();
 // needed middleware to access param values
 app.use(express.json());
 app.use(rateLimiter);
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 // routes
 app.use(ROUTES.NOTES, notesRoutes);

@@ -10,6 +10,8 @@ const rateLimiter = async (req, res, next) => {
         message: 'Too many requests, please try again later',
       });
     }
+
+    next();
   } catch (error) {
     console.log('Rate limit error', error);
     next(error);
