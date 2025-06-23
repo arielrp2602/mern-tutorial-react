@@ -13,13 +13,13 @@ const PORT = process.env.PORT || 5001;
 
 connectDB();
 // needed middleware to access param values
-app.use(express.json());
-app.use(rateLimiter);
 app.use(
   cors({
     origin: '*',
   })
 );
+app.use(express.json());
+app.use(rateLimiter);
 
 // routes
 app.use(ROUTES.NOTES, notesRoutes);
