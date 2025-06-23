@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { toast } from 'react-hot-toast';
 import { ArrowLeftIcon } from 'lucide-react';
-import axios from 'axios';
+import api from '../lib/axios';
 
 function Create() {
   const [note, setNote] = useState({});
@@ -28,7 +28,7 @@ function Create() {
 
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:5001/api/notes', {
+      await api.post('/notes', {
         ...note,
       });
       toast.success('Note created successfully!');
